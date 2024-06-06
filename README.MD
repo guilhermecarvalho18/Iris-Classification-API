@@ -1,61 +1,60 @@
-# Iris Classification Project
+# Projeto de Classificação Iris
 
-This project provides a machine learning model for classifying iris flowers using the Iris dataset. The model is deployed as a REST API using FastAPI.
+Este projeto fornece um modelo de aprendizado de máquina para classificar flores de íris usando o conjunto de dados Iris. O modelo é implantado como uma API REST usando FastAPI.
 
-## Project Structure
-- `api/`: Contains the FastAPI application.
-- `data/`: Contains the dataset.
-- `model/`: Contains the model training script and serialized model.
-- `preprocessing/`: Contains the data preprocessing script.
-- `Dockerfile`: Dockerfile for containerizing the application.
-- `requirements.txt`: List of dependencies.
+## Estrutura do Projeto
+- `api/`: Contém a aplicação FastAPI.
+- `data/`: Contém o conjunto de dados.
+- `model/`: Contém o script de treinamento do modelo e o modelo serializado.
+- `preprocessing/`: Contém o script de pré-processamento de dados.
+- `Dockerfile`: Dockerfile para conteinerizar a aplicação.
+- `requirements.txt`: Lista de dependências.
 
-## Reproducing the Pipeline
+## Reproduzindo a pipeline
 
-### 1. Set Up the Environment
+### 1. Configure o ambiente
 
-1. **Clone the repository**:
+1. **Clone o repositório**:
    ```
    git clone https://github.com/guilhermecarvalho18/Iris-Classification-API.git
    cd Iris-Classification-API
    ```
 
-2. **Create a virtual environment**:
+2. **Crie um ambiente virtual**:
    ```
    python3 -m venv venv
-   source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
+   source venv/bin/activate # No Windows, use `venv\Scripts\activate`
    ```
 
-3. **Install dependencies**:
+3. **Instalar dependências**:
    ```
    pip install -r requirements.txt
    ```
 
+### 2. Prepare os dados
 
-### 2. Prepare the Data
-
-1. **Download the dataset**:
+1. **Faça o download do dataset**:
    ```
    curl -o iris.csv https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data
    mv iris.csv iris-classification-project/data/raw/
    ```
 
-### 3. Train the Model
+### 3. Treine o modelo
 
-1. **Run train.py**:
+1. **Execute train.py**:
    ```
    python model/train.py
    ```
 
-## Start the API
+## Inicie a API
 
-1. **Build the Docker image:**
+1. **Crie a Docker image:**
 
    ```
    docker build -t iris-classification-api .
    ```
 
-2. **Run the Docker container:**
+2. **Execute o Docker container:**
 
    ```
    docker run -p 80:80 iris-classification-api
@@ -64,22 +63,22 @@ This project provides a machine learning model for classifying iris flowers usin
 
    **Health Check**
    - Endpoint: /health
-   - Method: GET
-   - Description: Checks the health status of the API.
+   - Método: GET
+   - Descrição: Verifica o status de integridade da API.
 
    ```
-   curl -X GET "http://127.0.0.1:8000/health"
+   curl -X GET "http://localhost:80/health"
    ```
 
    **Predict**
     - Endpoint: /predict
-    - Method: POST
-    - Description: Predicts the class of an iris flower.
+    - Método: POST
+    - Descrição : Prevê a classe de uma flor de íris.
 
    ```
    curl -X POST "http://localhost:80/predict" -H "Content-Type: application/json" -d @request.json
    ```
-   - Request Body for request.json:
+   - Estrutura de requisição para request.json:
    ```
     {
     "model_name": "logistic_regression",
