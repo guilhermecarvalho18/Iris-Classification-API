@@ -1,0 +1,35 @@
+{
+    "model_name": "logistic_regression",
+    "preprocessing_params": {
+      "missing_threshold": 0.7,
+      "n_neighbors": 5,
+      "variance_threshold": 0.0,
+      "normalization_method": "standard",
+      "apply_normalize": true,
+      "z_threshold": 3,
+      "apply_filter_noise": true,
+      "pca_components": 2,
+      "pca_variance_threshold": 0.95,
+      "apply_pca": true,
+      "k_best_features": "all",
+      "apply_select_features": true,
+      "encoding_method": "label",
+      "drop_first": true,
+      "apply_encode_labels": true
+    },
+    "features": [
+      {
+        "sepal_length": 5.1,
+        "sepal_width": 3.5,
+        "petal_length": 1.4,
+        "petal_width": 0.2
+      },
+      {
+        "sepal_length": 6.2,
+        "sepal_width": 2.8,
+        "petal_length": 4.8,
+        "petal_width": 1.8
+      }
+    ]
+  }
+  
